@@ -1,0 +1,38 @@
+ext {
+    // Sdk and tools
+    minSdkVersion = 21
+    targetSdkVersion = 27
+    buildToolsVersion = '27.0.3'
+
+    // App dependencies
+    firebaseVersion = '16.0.1'
+    fcmVersion = '17.1.0'
+    supportLibraryVersion = '27.1.1'
+    constraintLayoutVersion = '1.1.2'
+}
+
+buildscript {
+    ext.kotlin_version = '1.2.60'
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.0.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
