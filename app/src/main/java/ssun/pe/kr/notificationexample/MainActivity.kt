@@ -17,6 +17,7 @@ import kotlinx.coroutines.experimental.launch
 
 class MainActivity : AppCompatActivity() {
     companion object {
+        private const val CHANNEL_ID = "CHANNEL_1"
         private const val PROGRESS_DURATION: Long = 3000
     }
 
@@ -56,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         btnNotify.setOnClickListener { showSimpleNotification() }
         // 확장 레이아웃 (인박스 스타일)
         btnNotify2.setOnClickListener { showExtendedNotification() }
+        // 그룹
+        btnNotify2_2.setOnClickListener { showGroupNotification() }
         // 프로그레스
         btnNotify3.setOnClickListener { showProgressNotification(PROGRESS_DURATION) }
         // 프로그레스 (무한)
@@ -76,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         btnSetting.setOnClickListener {
             val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
             intent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-            //intent.putExtra(Settings.EXTRA_CHANNEL_ID, "CHANNEL_1")
+            //intent.putExtra(Settings.EXTRA_CHANNEL_ID, CHANNEL_ID)
             startActivity(intent)
         }
     }
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSimpleNotification() {
         mNotiCount++
 
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setContentTitle(if (mNotiCount == 1) "단순 알림" else "알림 업데이트")
                 .setContentText("텍스트 $mNotiCount")
@@ -94,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showExtendedNotification() {
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_notifications_active)) // 벡터 노노
                 .setContentTitle("확장 레이아웃")
@@ -112,8 +115,34 @@ class MainActivity : AppCompatActivity() {
         mNotificationManager.notify(1, builder.build())
     }
 
+    private fun showGroupNotification() {
+        // 그룹 알림을 먼저 생성
+        val groupBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                .setContentTitle("알림")
+                .setContentText("텍스트")
+                .setColor(ContextCompat.getColor(this, R.color.teal_500))
+                .setGroup("NOTI_GROUP")
+                .setGroupSummary(true)
+
+        mNotificationManager.notify(22000, groupBuilder.build())
+
+        // 자식 알림들을 생성
+        for (i in 1 .. 5) {
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                    .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_notifications_active)) // 벡터 노노
+                    .setContentTitle("알림 $i")
+                    .setContentText("텍스트 $i")
+                    .setColor(ContextCompat.getColor(this, R.color.teal_500))
+                    .setGroup("NOTI_GROUP")
+
+            mNotificationManager.notify(22000 + i, builder.build())
+        }
+    }
+
     private fun showProgressNotification(delay: Long) {
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_notifications_active)) // 벡터 노노
                 .setContentTitle("프로그레스")
@@ -135,7 +164,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toggleInfiniteProgressNotification(show: Boolean) {
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setContentTitle("프로그레스 (무한)")
                 .setContentText(if (show) null else "Completed")
@@ -149,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         val remoteViews = RemoteViews(BuildConfig.APPLICATION_ID, R.layout.custom_notification)
         remoteViews.setImageViewResource(R.id.ivImage, R.drawable.ic_notifications_black_24dp)
 
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setContentTitle("커스텀")
                 .setContentText("텍스트5")
@@ -160,7 +189,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showBigPictureNotification() {
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("빅픽쳐 스타일")
                 .setContentText("빅픽쳐 스타일")
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
@@ -173,7 +202,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showBigTextNotification() {
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("빅텍스트 스타일")
                 .setContentText("빅텍스트 스타일")
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
@@ -187,7 +216,7 @@ class MainActivity : AppCompatActivity() {
     private fun showMessagingNotification() {
         val time = System.currentTimeMillis()
 
-        val builder = NotificationCompat.Builder(this, "CHANNEL_1")
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("메시징 스타일")
                 .setContentText("메시징 스타일")
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)

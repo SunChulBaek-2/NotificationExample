@@ -38,10 +38,23 @@
         android:text="확장 (인박스 스타일)"
         android:textColor="@color/orange_500"
         app:layout_constraintBottom_toTopOf="@id/btnNotify3"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnNotify2_2"
         app:layout_constraintTop_toBottomOf="@id/btnNotify"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnNotify2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그룹"
+        android:textColor="@color/teal_500"
+        app:layout_constraintBottom_toBottomOf="@id/btnNotify2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/btnNotify2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnNotify2" />
 
     <Button
         android:id="@+id/btnNotify3"
