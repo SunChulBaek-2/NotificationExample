@@ -96,7 +96,6 @@ class MainActivity : AppCompatActivity() {
     private fun showExtendedNotification() {
         val builder = NotificationCompat.Builder(this, "CHANNEL_1")
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_notifications_active)) // 벡터 노노
                 .setContentTitle("확장 레이아웃")
                 .setContentText("텍스트2")
                 .setColor(ContextCompat.getColor(this, R.color.orange_500))
@@ -106,6 +105,7 @@ class MainActivity : AppCompatActivity() {
         arrayOf("NC vs 두산", "롯데 vs 한화", "삼성 vs SK", "kt vs 넥센", "LG vs KIA").forEach { line ->
             inboxStyle.addLine(line)
         }
+        inboxStyle.setSummaryText("5 경기가 랄랄라")
         builder.setStyle(inboxStyle)
 
         mNotificationManager.notify(1, builder.build())
