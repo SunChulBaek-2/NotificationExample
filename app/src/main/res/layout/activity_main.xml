@@ -18,6 +18,111 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Button
+        android:id="@+id/btnNotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="단순 알림 (업데이트)"
+        android:textColor="@color/red_500"
+        app:layout_constraintBottom_toTopOf="@id/btnNotify2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnNotify2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확장 (인박스 스타일)"
+        android:textColor="@color/orange_500"
+        app:layout_constraintBottom_toTopOf="@id/btnNotify3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNotify"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnNotify3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로그레스"
+        android:textColor="@color/yellow_500"
+        app:layout_constraintBottom_toTopOf="@id/btnNotify5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnNotify4"
+        app:layout_constraintTop_toBottomOf="@id/btnNotify2"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnNotify4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로그레스(무한)"
+        android:textColor="@color/green_500"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/btnNotify3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnNotify3" />
+
+    <Button
+        android:id="@+id/btnNotify5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="커스텀뷰"
+        android:textColor="@color/blue_500"
+        app:layout_constraintBottom_toTopOf="@id/btnNotify6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNotify3"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnNotify6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="빅픽쳐 스타일"
+        android:textColor="@color/indigo_500"
+        app:layout_constraintBottom_toTopOf="@id/btnNotify8"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnNotify7"
+        app:layout_constraintTop_toBottomOf="@id/btnNotify5" />
+
+    <Button
+        android:id="@+id/btnNotify7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="빅텍스트 스타일"
+        android:textColor="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="@id/btnNotify6"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/btnNotify6"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnNotify6" />
+
+    <Button
+        android:id="@+id/btnNotify8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메시징 스타일"
+        android:textColor="@color/red_500"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNotify6"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="설정"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
