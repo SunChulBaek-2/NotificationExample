@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity() {
     private fun showExtendedNotification() {
         val builder = NotificationCompat.Builder(this, "CHANNEL_1")
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_notifications_active)) // 벡터 노노
                 .setContentTitle("확장 레이아웃")
                 .setContentText("텍스트2")
                 .setColor(ContextCompat.getColor(this, R.color.orange_500))
