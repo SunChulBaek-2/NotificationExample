@@ -1,8 +1,6 @@
 package ssun.pe.kr.notificationexample
 
-import android.app.NotificationManager
 import android.content.Context
-import android.support.v4.app.NotificationCompat
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -10,8 +8,16 @@ import com.google.firebase.messaging.RemoteMessage
 class FcmService : FirebaseMessagingService() {
 
     companion object {
-        private const val TAG = "FcmService"
+        const val TAG = "FcmService"
+
+        const val KEY_FCM_TOKEN = "KEY_FCM_TOKEN"
     }
+
+    var token: String?
+        get() = getSharedPreferences(TAG, Context.MODE_PRIVATE).getString(KEY_FCM_TOKEN, null)
+        set(token) {
+            getSharedPreferences(TAG, Context.MODE_PRIVATE).edit().putString(KEY_FCM_TOKEN, token).apply()
+        }
 
     override fun onCreate() {
         super.onCreate()
@@ -20,7 +26,11 @@ class FcmService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String?) {
         super.onNewToken(token)
-        Log.d(TAG, "[x1210x] onNewToken($token)")
+
+        if (token != this.token) {
+            this.token = token
+        }
+        Log.d(TAG, "[x1210x] onNewToken( token = ${this.token} )")
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {

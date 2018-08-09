@@ -11,6 +11,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.NotificationCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.RemoteViews
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -21,6 +22,8 @@ import kotlinx.coroutines.experimental.launch
 
 class MainActivity : AppCompatActivity() {
     companion object {
+        private const val TAG = "MainActivity"
+
         private const val CHANNEL_ID = "CHANNEL_1"
         private const val PROGRESS_DURATION: Long = 3000
     }
@@ -54,6 +57,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Log.d(TAG, "onCreate() FCM token = ${getSharedPreferences(FcmService.TAG, Context.MODE_PRIVATE).getString(FcmService.KEY_FCM_TOKEN, null)}")
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
