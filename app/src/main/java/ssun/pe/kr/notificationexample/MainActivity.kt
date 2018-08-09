@@ -209,7 +209,7 @@ class MainActivity : AppCompatActivity() {
                                 .setContentText("빅픽쳐 스타일")
                                 .setSmallIcon(R.drawable.ic_notifications_active)
                                 .setLargeIcon(resource)
-                                .setStyle(NotificationCompat.BigPictureStyle().bigPicture(resource))
+                                .setStyle(NotificationCompat.BigPictureStyle().bigPicture(resource).bigLargeIcon(null))
                                 .setColor(ContextCompat.getColor(this@MainActivity, R.color.indigo_500))
 
                         mNotificationManager.notify(5, builder.build())
