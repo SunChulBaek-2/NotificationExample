@@ -1,3 +1,5 @@
+apply plugin: "com.github.ben-manes.versions"
+
 ext {
     // Sdk and tools
     minSdkVersion = 21
@@ -5,16 +7,16 @@ ext {
     buildToolsVersion = '27.0.3'
 
     // App dependencies
-    firebaseVersion = '16.0.1'
-    fcmVersion = '17.1.0'
+    firebaseVersion = '16.0.3'
+    fcmVersion = '17.3.1'
     supportLibraryVersion = '27.1.1'
     constraintLayoutVersion = '1.1.2'
-    glideVersion = "4.7.1"
+    glideVersion = "4.8.0"
 }
 
 buildscript {
-    ext.kotlin_version = '1.2.60'
-    ext.kotlinCoroutinesVersion = '0.24.0'
+    ext.kotlin_version = '1.2.61'
+    ext.kotlinCoroutinesVersion = '0.25.3'
 
     repositories {
         google()
@@ -24,7 +26,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.0.2'
+        classpath 'com.google.gms:google-services:4.1.0'
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.20.0"
     }
 }
 
